@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import confetti from 'canvas-confetti'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Square } from './components/Square'
 import { TURNS, WINNER_COMBOS } from './constants'
