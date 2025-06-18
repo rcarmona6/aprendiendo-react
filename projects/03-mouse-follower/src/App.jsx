@@ -5,6 +5,8 @@ const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false)
   const [position, setPosition] = useState({x:0, y:0})
 
+
+  // PointerMove
   useEffect(() => {
     console.log('efecto', {enabled})
     
@@ -19,6 +21,8 @@ const FollowMouse = () => {
     }
     
     // cleanup
+    // Cuando el componente se desmonta
+    // Cuando cambian las dependencias, antes de ejecutar
     return () => {
       console.log('cleanup')
       window.removeEventListener('pointermove', handleMove)
@@ -36,6 +40,18 @@ const FollowMouse = () => {
     // }
   }
   , [enabled])
+
+  // [] - Se ejecuta una vez, cuando se monta el componente
+  // [enabled] - Se ejecuta cuando cambia enabled y cuando se monta el componente
+  // undefined - Se ejecuta cada vez que se renderiza el componente 
+
+  useEffect(() => {
+    document.body.classList.toggle('no-cursos', enabled)
+
+    return () => {
+      document.body.classList.remove('no-cursos')
+    }
+  }, [enabled])
 
   return (
     <>
